@@ -1,0 +1,7 @@
+A ideia desse projeto seria lidaerr com as politicass de permissão de usuários 
+eu vou usar o framwork breeze porque ele ja traz toda a parte de autenticação 
+pronta assim eu posso usar somente oque interessa para controlaar as permissões 
+do usuario, que seriam as Gates.
+
+
+ 

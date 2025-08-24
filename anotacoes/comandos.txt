@@ -1,0 +1,11 @@
+trazendo so arquivos do breeze para dentro da aplicação 
+
+   composer require laravel/breeze --dev
+
+instalando o breeze 
+
+   php artisan breeze:install
+
+
+
+   
