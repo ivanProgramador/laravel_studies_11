@@ -2,9 +2,17 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    //testando se existe um login feito por esse usuario
+    if (Auth::check()) {
+        //se sim ele vai aparar a dasboard 
+        return redirect()->route('dashboard');
+    }else {
+        //se não ele vai para a tela de login
+        return view('login');
+    }
 });
 
 Route::get('/dashboard', function () {
