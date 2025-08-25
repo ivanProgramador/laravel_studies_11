@@ -6,6 +6,19 @@ instalando o breeze
 
    php artisan breeze:install
 
+criando a migrations dos posts 
+   
+   php artisan make:migration create_posts_table
+
+criando as tabelas executando as migrations
+
+   php artisan migrate
+
+
+
+
+
+
 
 
    
