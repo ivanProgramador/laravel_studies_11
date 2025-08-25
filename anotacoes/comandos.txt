@@ -29,6 +29,14 @@ rodando a seed pra cadastrar usuarios
 rodando a seed pra cadastrar posts 
   
   php artisan db:seed --class=UsersTableSeeder
+
+criando o model posts 
+  
+   php artisan make:model Posts
+
+criando o controller principal da aplicação 
+   
+   php artisan make:controller MainController
    
  
 

@@ -32,6 +32,71 @@ No caso eu também vou criar uma migration posts que será o meu elemento de tes
             $table->timestamps();
         });
     }
+----------------------------------------------------------------------------
+Agora que eu tenho as duas entidades, eu preciso estabelecar um relacionamento entre elas,
+na regrade negocio desse projeto um usuario pode fazer varios posts, porém um post só pode 
+pertencer a um usuario.
+
+Por padrão o breeze gera o model user para o sistema dele, então eu mesmo vou precisar fazer 
+o meu model dos posts, o codigo abaixo cria um model vazio 
+
+ php artisan make:model Posts
+
+
+model gerado depois da execução do comando 
+--------------------------------------------------------------------
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Posts extends Model
+{
+    //
+}
+
+---------------------------------------------------------------------
+
+Criando uma função dentro do model que avisa que um posst pertence a um usuario,
+
+
+$this->belongsTo(User::class);
+
+
+model completo
+---------------------------------------------------------------------------
+class Posts extends Model
+{
+    use HasFactory;
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+}
+----------------------------------------------------------------------------
+Agora o model do usuario tambem precisa saber disso so que no caso do usuario,
+eu vou usar outra funcção porque e relação de pertencimento já é de outro tipo.
+Nesse caso eu aviso qque um usuario pode ter muitos posts, o model Users por ter
+sido criado pelo breeze de forma automaica tem muitos metodos proprios, então 
+essa função deve ser inserida como mias um bloco e não deve afetar as outras que
+já existem.    
+
+---------------------------------------------------------------
+    function posts(){
+        return $this->hasMany(Posts::class);
+    }
+----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 
 
