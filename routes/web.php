@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     //testando se existe um login feito por esse usuario
     if (Auth::check()) {
-        //se sim ele vai aparar a dasboard 
+        //se sim ele vai  para a dasboard 
         return redirect()->route('dashboard');
     }else {
         //se não ele vai para a tela de login
-        return view('login');
+        return view('auth.login');
     }
 });
 

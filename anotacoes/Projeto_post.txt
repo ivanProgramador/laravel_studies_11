@@ -88,8 +88,106 @@ já existem.
         return $this->hasMany(Posts::class);
     }
 ----------------------------------------------------------------------
+Comprovando a relação usuario e post atraves do metodo index aqui eu trago 
+o model Posts e useo o metodo with parra trazer os usuarios tambem, mas isso 
+só é possivel porque existe a relação entre esass duas entidades relacionais,
 
 
+ public function index(){
+
+    //Trazendo todos os posts que os dados dos usuarios que postaram
+
+    $post = Posts::with('user')->get();
+
+    dd($post);
+
+   }
+
+Eu fiz o uso da função dd() depois de fazer o select usando o model 
+eu coloco e colocar na variável post eu coloco a função dd pra despejasr os dados 
+e parar o processo.
+
+será retonado um array com varios dados mas os dados do post ficaram nesse array 
+associativo 
+
+#attributes: array:6 [▼
+        "id" => 1
+        "user_id" => 1
+        "title" => "Primeiro post "
+        "content" => "Esse post é sobre Laravel 12"
+        "created_at" => null
+        "updated_at" => null
+      ]
+
+-----------------------------------------------------------------------------------------      
+e no mesmo array eu tambem vou ter os dados do usuario estou motsrando de forma bruta para que 
+eu tenha uma noção maior doque esta vindo. 
+
+-------------------------------------------------------------------------------------------
+  #relations: array:1 [▼
+        "user" => 
+App\Models
+\
+User
+ {#1387 ▼
+          #connection: "mysql"
+          #table: "users"
+          #primaryKey: "id"
+          #keyType: "int"
+          +incrementing: true
+          #with: []
+          #withCount: []
+          +preventsLazyLoading: false
+          #perPage: 15
+          +exists: true
+          +wasRecentlyCreated: false
+          #escapeWhenCastingToString: false
+          #attributes: array:9 [▼
+            "id" => 1
+            "name" => "Administrator"
+            "email" => "admin@gmail.com"
+            "email_verified_at" => null
+            "password" => "$2y$12$T/P2EWdSgvvW0vZiq5JxLOhGq679d0hpgCraAp5l24kq/M3KJ6uDu"
+            "role" => "admin"
+            "remember_token" => null
+            "created_at" => null
+            "updated_at" => null
+          ]
+          #original: array:9 [▼
+            "id" => 1
+            "name" => "Administrator"
+            "email" => "admin@gmail.com"
+            "email_verified_at" => null
+            "password" => "$2y$12$T/P2EWdSgvvW0vZiq5JxLOhGq679d0hpgCraAp5l24kq/M3KJ6uDu"
+            "role" => "admin"
+            "remember_token" => null
+            "created_at" => null
+            "updated_at" => null
+          ]
+          #changes: []
+          #previous: []
+          #casts: array:2 [▶]
+          #classCastCache: []
+          #attributeCastCache: []
+          #dateFormat: null
+          #appends: []
+          #dispatchesEvents: []
+          #observables: []
+          #relations: []
+          #touches: []
+          #relationAutoloadCallback: null
+          #relationAutoloadContext: null
+          +timestamps: true
+          +usesUniqueIds: false
+          #hidden: array:2 [▶]
+          #visible: []
+          #fillable: array:3 [▶]
+          #guarded: array:1 [▶]
+          #authPasswordName: "password"
+          #rememberTokenName: "remember_token"
+        }
+
+--------------------------------------------------------------------------------------
 
 
 
