@@ -8,8 +8,9 @@
     <div class="py-10">
 
         @foreach ($posts as $post)
+        
             <x-post-component :post="$post" />
-            
+
         @endforeach
        
     </div>

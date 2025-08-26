@@ -1,0 +1,13 @@
+Antes de codificar de fato as permissoess é necessério ter em mente a regra de negócio do sistema,como se trata
+de permissões basicamente antes de codificar deve estar claro quem pode fazer oque.No caso eu tenho 3 classes de 
+usuarios, teste das gates ele não vai ter a funcionalidade de edição.
+
+
+1 - administrador 
+    pode exluir posts e contas de outras pessoas e os posts dele mesmo
+
+2 - usuario 
+    pode postar e pode excluir os seus posts
+
+3 - visistante 
+    só pode visualizar  
