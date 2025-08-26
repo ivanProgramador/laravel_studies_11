@@ -37,6 +37,12 @@ criando o model posts
 criando o controller principal da aplicação 
    
    php artisan make:controller MainController
+
+criando o componente Post 
+
+   php artisan make:component PostComponent
+
+ 
    
  
 
