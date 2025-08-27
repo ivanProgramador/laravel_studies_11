@@ -19,10 +19,17 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
 
-     Route::get('/dashboard', [MainController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [MainController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //rotas de ação 
+    Route::get('/post/create', [MainController::class, 'createPost'])->name('post.create');
+    Route::get('/post/delete', [MainController::class, 'deletePost'])->name('post.delete');
+
+
+
 });
 
 require __DIR__.'/auth.php';

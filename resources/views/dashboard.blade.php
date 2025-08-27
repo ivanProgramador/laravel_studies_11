@@ -10,7 +10,7 @@
         {{-- botão de criar post, só aparece para admin e normal user --}}
         @can('post.create')
            <div class="max-w-7xl mx-auto mb-6 px-8">
-              <a href="#"  class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-6 rounded">Create post</a>
+              <a href="{{ route('post.create') }}"  class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-6 rounded">Create post</a>
            </div>
         @endcan
 
