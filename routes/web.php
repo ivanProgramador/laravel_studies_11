@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
     //rotas de ação 
     Route::get('/post/create', [MainController::class, 'createPost'])->name('post.create');
-    Route::get('/post/delete', [MainController::class, 'deletePost'])->name('post.delete');
+    Route::get('/post/delete/{id}', [MainController::class, 'deletePost'])->name('post.delete');
 
 
 
