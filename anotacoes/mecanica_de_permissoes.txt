@@ -11,3 +11,40 @@ usuarios, teste das gates ele não vai ter a funcionalidade de edição.
 
 3 - visistante 
     só pode visualizar  
+
+As gates que vão fazer esse teste ficam dentro do "AppServiceProvider.php" dentro dessas 
+gates existe uma logica de teste oque vai definir se elas vão retornar true ou false
+essa é a gate que dá a permissão de criação, ela vai recebre o usuario e retronar o
+resultado de um teste pirmiro ela testa se o usuário é um administrador se não for 
+ela vai parar o proximo teste verificar se ele é um usuario comum, ambos estão logados 
+nesse contexto se o usuario forr um admin ele libera o botão de criação e se o usuario for 
+um usuario comum ele também pode criar posts então essa gate restornar sim se uma dessa condições
+for atendida.        
+
+Gate::define('post.create',function(User $user){
+            return($user->role === 'admin' || $user->role === 'normal_user');
+        });
+
+A segunda gate serve para liberar o botão de delete, mas ela também tem suas condições
+se for um administrador o botão de deletar aparece em todos os posts, se for um usuario
+comum sos aparece nos ports que ele mesmo criou.   
+
+ Gate::define('post.delete',function(User $user,$post){
+            return($user->role === 'admin' || $user->id === $post->user_id);
+        });
+
+
+public function boot(): void
+    {
+        //gate para rota de criação 
+        Gate::define('post.create',function(User $user){
+            return($user->role === 'admin' || $user->role === 'normal_user');
+        });
+        
+        //gate para rota de deletar 
+         Gate::define('post.delete',function(User $user,$post){
+            return($user->role === 'admin' || $user->id === $post->user_id);
+        });
+
+      
+    }
