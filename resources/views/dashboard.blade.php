@@ -7,12 +7,35 @@
 
     <div class="py-10">
 
-        {{-- botão de criar post, só aparece para admin e normal user --}}
-        @can('post.create')
-           <div class="max-w-7xl mx-auto mb-6 px-8">
-              <a href="{{ route('post.create') }}"  class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-6 rounded">Create post</a>
-           </div>
-        @endcan
+
+        {{-- Caso eu não tenha posts para mostrar  --}}
+
+         @empty($posts->count())
+            <div class="max-w-7xl mx-auto mb-6 px-8 text-center">
+                <p class="text-gray-400 mb-5">No posts found.</p>
+                 @can('post.create')
+                   <div class="max-w-7xl mx-auto mb-6 px-8">
+                     <a href="{{ route('post.create') }}"  class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-6 rounded">Create post</a>
+                   </div>
+                 @endcan
+
+            </div>
+
+
+         @else
+
+            {{-- botão de criar post, só aparece para admin e normal user --}}
+           @can('post.create')
+              <div class="max-w-7xl mx-auto mb-6 px-8">
+                 <a href="{{ route('post.create') }}"  class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-6 rounded">Create post</a>
+              </div>
+           @endcan
+             
+         
+         @endempty
+
+
+       
 
         @foreach ($posts as $post)
         

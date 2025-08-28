@@ -48,3 +48,26 @@ public function boot(): void
 
       
     }
+------------------------------------------------------------------------------------- 
+Testando permissões direto na view o teste na verdade é bem simples a diretiva " @can " 
+usa as Gates para testar se o usuario pode ou não ter acesso a um determinado componente
+No codigo abaixo eu testo a gate "post.create" que vai testar se o usuario que esta logado 
+no sistema pode te acesso ao botão de criação do post, se a Gate restronar true o botão aparece
+e ele vai poder adicionar, agora se não o botão não vai existir na pagina.
+
+-------------------------------------------------------------------------------------------------
+  {{-- botão de criar post, só aparece para admin e normal user --}}
+        @can('post.create')
+           <div class="max-w-7xl mx-auto mb-6 px-8">
+              <a href="{{ route('post.create') }}"  class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-6 rounded">Create post</a>
+           </div>
+        @endcan
+-------------------------------------------------------------------------------------------------------
+
+Pra deixar mais facil para o usuario identificar posts que ele emesmo fez eu coloquei uma condicional dentro 
+do componente do post, no caso eu uso um operador ternario para testar se o id do usuario que fez o post é 
+igual ao id do usuario logado, se for ele fica com a acor de fundo azul claro.   
+
+---------------------------------------------------------------------------------------------
+<div class="{{ Auth::user()->id === $post->user_id ?"bg-blue-100":"bg-white" }} dark:bg-gray-800 over[flow-hidden shadow-sm sm:rounded-lg]">
+--------------------------------------------------------------------------------------------------------------
