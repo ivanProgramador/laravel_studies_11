@@ -42,6 +42,10 @@ criando o componente Post
 
    php artisan make:component PostComponent
 
+criando a view pra cadastrar os posts 
+   
+   php artisan make:view create-post
+
  
    
  
